@@ -62,7 +62,7 @@ Below is an example of how to access data from the POST array:
 
 File data is stored in an instance of HttpFile, which has the following properties:
 
-* **name::String**: The field name (e.g. <input type="file" name="**upload**">
+* **name::String**: The field name (e.g. &lt;input type="file" name="**upload**">
 * **mime::String**: The MIME type of the file, as reported by the browser.
 * **data::Array{Uint8}**: The file data, stored as a byte array.
 
