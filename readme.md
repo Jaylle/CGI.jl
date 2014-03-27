@@ -74,3 +74,15 @@ The below example saves a copy of a submitted file, demonstrating how to access 
         write(fcopy, ffile.data)
         close(fcopy)
     end
+
+### Outputting headers
+
+The module exports the function CgiHeader, which has 3 parameters:
+
+* **field::String**: The field name (e.g. Content-Type)
+* **value::String**: The field value (e.g. text/plain)
+* **app::CgiApplication**: The CgiApplication instance to add the header to. Defaults to `cgi`
+
+Example usage:
+
+    CgiHeader("Content-Type", "text/plain")
