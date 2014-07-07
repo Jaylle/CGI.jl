@@ -284,9 +284,9 @@ module CGI
         data = Dict{UTF8String, UTF8String}()
 
         prevCharacter::Char = 0x00
-        inSingleQuotes::Boolean = false
-        inDoubleQuotes::Boolean = false
-        ignore::Boolean = false
+        inSingleQuotes::Bool = false
+        inDoubleQuotes::Bool = false
+        ignore::Bool = false
         workingString::UTF8String = ""
         
         dataStringLength::Int = length(dataString)
@@ -359,12 +359,12 @@ module CGI
 
         headerRaw::Array{Uint8} = Uint8[]
 
-        captureAsData::Boolean = false
+        captureAsData::Bool = false
 
-        crOn::Boolean = false
-        hadLineEnding::Boolean = false
-        foundBoundary::Boolean = false
-        foundFinalBoundary::Boolean = false
+        crOn::Bool = false
+        hadLineEnding::Bool = false
+        foundBoundary::Bool = false
+        foundFinalBoundary::Bool = false
 
         bytes::Int = length(data)
 
@@ -558,7 +558,7 @@ module CGI
 
                     if (length(formParts) > 0)
                         for part::HttpFormPart in formParts
-                            hasFile::Boolean = false
+                            hasFile::Bool = false
                             file::HttpFile = HttpFile()
 
                             for (field::UTF8String, values::Dict{UTF8String, UTF8String}) in part.headers
