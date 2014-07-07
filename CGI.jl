@@ -462,7 +462,7 @@ module CGI
                                 if (length(header) > 0)
                                     headerParts = split(header, ": ", 2)
 
-                                    valueDecoded = CgiParseSemicolonFields(headerParts[2]);
+                                    valueDecoded = CgiParseSemicolonFields(utf8(headerParts[2]));
 
                                     if (length(valueDecoded) > 0)
                                         part.headers[headerParts[1]] = valueDecoded
