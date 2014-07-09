@@ -97,7 +97,7 @@ File data is stored in a string-indexed **`Dict`** of **`HttpFile`** objects.
 
 * **`name::String` :** The original name of the file, as reported by the browser.
 * **`mime::String` :** The MIME type of the file, as reported by the browser.
-* **`data::Array{Uint8}` :**: The file data, stored in raw binary form as a byte array.
+* **`data::Array{Uint8}` :** The file data, stored in raw binary form as a byte array.
 
 The below example demonstrates how to save an uploaded file.
 
