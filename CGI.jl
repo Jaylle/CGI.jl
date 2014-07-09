@@ -57,16 +57,16 @@ module CGI
     #       > post (field)
     #           An array of string values sent as form data via POST.
     #       > files (field)
-    #           An array of HttpFile objects for files uploaded in the request. 
+    #           A string-indexed array of HttpFile objects, containing files uploaded in the request. 
     ###
 
     type HttpInputCollection
         method::UTF8String
         get::Dict{UTF8String, UTF8String} # A decision was made here to support only string keys and values
         post::Dict{UTF8String, UTF8String}
-        files::Array{HttpFile}
+        files::Dict{UTF8String, HttpFile}
 
-        HttpInputCollection() = new ("", Dict{UTF8String, UTF8String}(), Dict{UTF8String, UTF8String}(), HttpFile[])
+        HttpInputCollection() = new ("", Dict{UTF8String, UTF8String}(), Dict{UTF8String, UTF8String}(), Dict{UTF8String, HttpFile}())
     end
 
     ###
@@ -578,6 +578,7 @@ module CGI
                         for part::HttpFormPart in formParts
                             hasFile::Bool = false
                             file::HttpFile = HttpFile()
+                            fileFieldName::UTF8String = ""
 
                             for (field::UTF8String, values::Dict{UTF8String, UTF8String}) in part.headers
                                 if (
@@ -590,6 +591,7 @@ module CGI
 
                                     if (getkey(values, "filename", null) != null)
                                         if (length(values["filename"]) > 0)
+                                            fileFieldName = values["name"]
                                             file.name = values["filename"]
                                             hasFile = true
                                         end
@@ -606,8 +608,9 @@ module CGI
                             if (hasFile)
                                 file.data = part.data
 
-                                push!(app.input.files, file)
+                                app.input.files[fileFieldName] = file
 
+                                fileFieldName = ""
                                 file = HttpFile()
                                 hasFile = false
                             end # if
