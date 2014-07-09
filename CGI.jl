@@ -641,7 +641,16 @@ module CGI
 
             close(cgi.outWrite)
 
-            data = readavailable(cgi.outRead)
+            start_reading(cgi.outRead)
+            yield()
+
+            bytesAvailable = nb_available(cgi.outRead)
+
+            if bytesAvailable > 0
+                data = readavailable(cgi.outRead)
+            else
+                data = ""
+            end
 
             close(cgi.outRead)
 
@@ -659,7 +668,7 @@ module CGI
 
             # Write output
 
-            print(data)
+            write(STDOUT, data)
         end)
 
         # Boot the default instance
