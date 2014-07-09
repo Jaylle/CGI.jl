@@ -114,7 +114,7 @@ This module will redirect STDOUT to a new pipe. This is so that calls to the pri
 
 STDERR is redirected to STDOUT so that errors are written to the output buffer and don't cause the web server to hang.
 
-A function is registered using atexit() to grab the contents of the output buffer, restore the original STDOUT and write any headers and output.
+A function is registered using **`atexit`** to grab the contents of the output buffer, restore the original STDOUT and write any headers and output.
 
 ### Development
 
