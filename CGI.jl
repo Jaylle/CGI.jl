@@ -131,6 +131,24 @@ module CGI
         return app
     end
 
+    function header(app::CgiApplication, field::UTF8String, value::Int)
+        app.response.headers[field] = string(value)
+
+        return app
+    end
+
+    function header(app::CgiApplication, field::String, value::String)
+        app.response.headers[utf8(field)] = utf8(value)
+
+        return app
+    end
+
+    function header(app::CgiApplication, field::String, value::Int)
+        app.response.headers[utf8(field)] = string(value)
+
+        return app
+    end
+
     ###
     #   > CgiParseQuotedParameters (function)
     #
