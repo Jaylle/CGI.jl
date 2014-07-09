@@ -37,20 +37,20 @@ Below is a list of relevant types and their properties:
 
 * **`CgiApplication`**
 
- * **`input::HttpInputCollection` : ** GET, POST and file data.
- * **`server::Dict{UTF8String, UTF8String}` : ** Environment variables.
- * **`response::CgiResponse` : ** The response object (headers).
+ * **`input::HttpInputCollection` :** GET, POST and file data.
+ * **`server::Dict{UTF8String, UTF8String}` :** Environment variables.
+ * **`response::CgiResponse` :** The response object (headers).
 
 * **`HttpInputCollection`**
 
- * **`method::UTF8String` : ** The HTTP method sent in the request (e.g. GET or POST).
- * **`get::Dict{UTF8String, UTF8String}` : ** The query values passed in the URL (e.g. ?var=value).
- * **`post::Dict{UTF8String, UTF8String}` : ** POST data.
+ * **`method::UTF8String` :** The HTTP method sent in the request (e.g. GET or POST).
+ * **`get::Dict{UTF8String, UTF8String}` :** The query values passed in the URL (e.g. ?var=value).
+ * **`post::Dict{UTF8String, UTF8String}` :** POST data.
  * **`files::Array{HttpFile}` :** Uploaded files.
 
 * **`CgiResponse`**
 
- * **`headers::Dict{UTF8String, UTF8String}` : ** The HTTP headers to be sent in the response.
+ * **`headers::Dict{UTF8String, UTF8String}` :** The HTTP headers to be sent in the response.
 
 #### Sending headers
 
@@ -95,9 +95,9 @@ File data is stored in a string-indexed **`Dict`** of **`HttpFile`** objects.
 
 **`HttpFile`** has the following properties:
 
-* **`name::String` : ** The original name of the file, as reported by the browser.
-* **`mime::String` : ** The MIME type of the file, as reported by the browser.
-* **`data::Array{Uint8}` : **: The file data, stored in raw binary form as a byte array.
+* **`name::String` :** The original name of the file, as reported by the browser.
+* **`mime::String` :** The MIME type of the file, as reported by the browser.
+* **`data::Array{Uint8}` :**: The file data, stored in raw binary form as a byte array.
 
 The below example demonstrates how to save an uploaded file.
 
