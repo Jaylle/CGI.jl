@@ -1,5 +1,26 @@
 # Julia CGI
 
+### Table of contents
+
+* [Background](#background)
+ * [Important note](#important-note)
+
+* [Usage](#usage)
+ * [Installation](#installation)
+ * [Creating a CGI instance](#creating-a-cgi-instance)
+ * [Sending headers](#sending-headers)
+ * [Writing output](#writing-output)
+ * [Working with input](#working-with-input)
+    * [Query strings](#query-strings)
+    * [POST data](#post-data)
+    * [File data](#post-data)
+
+* [Internals / behaviour](#internals--behaviour)
+
+* [Development](#development)
+ * [Known issues](#known-issues)
+ * [Planned improvements](#planned-improvements)
+
 ### Background
 
 I have been assessing the potential for using Julia in web development. This module was developed so that Julia may be used in a Fast/CGI environment.
