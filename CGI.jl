@@ -676,6 +676,10 @@ module CGI
 
             redirect_stdout(cgi.stdoutOriginal)
 
+            # Add Content-Length header.
+
+            header(cgi, "Content-Length", bytesAvailable)
+
             # Output HTTP headers.
 
             for (header, value) in cgi.response.headers
