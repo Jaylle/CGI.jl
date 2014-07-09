@@ -65,7 +65,7 @@ The function can be called as either **`header`** or **`CGI.header`** e.g:
 
 In normal operation, headers can be set at any point in the application i.e. it's not a requirement that headers be set before any data is output *(due to output buffering; see below)*.
 
-#### Writing output.
+#### Writing output
 
 Output can be written using the standard Julia output functions. The CGI module will create an output buffer to store all output. The contents of the buffer will be flushed **as soon as the module's atexit hook is called** e.g. when the program finishes execution or one of the **`quit`**/**`exit`** functions are called.
 
